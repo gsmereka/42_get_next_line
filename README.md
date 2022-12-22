@@ -1,2 +1,3 @@
 # 42_get_next_line
-The get_next_line function is used to efficiently read lines from a file or standard input.
+The get_next_line function aims to efficiently read lines from a file or standard input. It can be useful in any situation where it is necessary to read a file line by line, such as processing log files, reading configuration files or inputting user data in an organized manner.
+The function is called repeatedly to read each line of the file and returns the read line as a string. If there is nothing left to read or an error occurs, the function returns NULL. In addition, the function is able to handle files that do not end with a newline character appropriately. This makes it a useful and versatile tool for reading files in C.

@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:31:47 by rinacio           #+#    #+#             */
-/*   Updated: 2022/12/24 18:16:00 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/12/24 19:10:21 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,33 +24,33 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_addstr(char *s1, char *s2)
+int	ft_addstr(char **s1, char *s2)
 {
 	char	*new_s;
 	int		s1_size;
 	int		s2_size;
 	int		i;
 
-	if (!s1)
-		s1 = ft_strdup("");
-	if (!s1 | !s2)
-		return (NULL);
-	i = 0;
-	s1_size = ft_strlen(s1);
+	if (*s1 == NULL)
+		*s1 = ft_strdup("");
+	if (*s1 == NULL || !s2)
+		return (-1);
+	s1_size = ft_strlen(*s1);
 	s2_size = ft_strlen(s2);
 	new_s = (char *)malloc((s1_size + s2_size + 1) * sizeof(char));
 	if (new_s == NULL)
-		return (NULL);
-	while (i < (s1_size + s2_size + 1))
+		return (-1);
+	i = -1;
+	while (++i < (s1_size + s2_size + 1))
 	{
 		if (i < s1_size)
-			new_s[i] = s1[i];
+			new_s[i] = (*s1)[i];
 		else
 			new_s[i] = s2[i - s1_size];
-		i++;
 	}
-	free(s1);
-	return ((char *)new_s);
+	free(*s1);
+	*s1 = new_s;
+	return (0);
 }
 
 char	*ft_strchr(char *s, int c)

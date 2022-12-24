@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 02:24:40 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/12/24 18:14:41 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/12/24 18:59:43 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*ft_read(int fd, char *next_s)
 			return (NULL);
 		}
 		temp_s[stop] = '\0';
-		next_s = ft_addstr(next_s, temp_s);
+		ft_addstr(&next_s, temp_s);
 	}
 	free(temp_s);
 	return (next_s);

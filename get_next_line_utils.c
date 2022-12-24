@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsmereka <gsmereka@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 16:31:47 by rinacio           #+#    #+#             */
-/*   Updated: 2022/07/05 21:56:42 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/12/24 18:03:59 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_alt_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*new_s;
 	int		s1_size;
@@ -32,7 +32,7 @@ char	*ft_alt_strjoin(char *s1, char *s2)
 	int		i;
 
 	if (!s1)
-		s1 = ft_alt_strdup("");
+		s1 = ft_strdup("");
 	if (!s1 || !s2)
 		return (NULL);
 	i = 0;
@@ -53,7 +53,7 @@ char	*ft_alt_strjoin(char *s1, char *s2)
 	return ((char *)new_s);
 }
 
-char	*ft_alt_strchr(char *s, int c)
+char	*ft_strchr(char *s, int c)
 {
 	char	char_c;
 
@@ -71,17 +71,14 @@ char	*ft_alt_strchr(char *s, int c)
 	return ((char *)s);
 }
 
-char	*ft_alt_strdup(char *s)
+char	*ft_strdup(char *s)
 {
 	char	*dest;
 	int		size;
 	int		i;
 
 	if (!s)
-	{
-		s = (char *)malloc(1 * sizeof(char *));
-		s[0] = '\0';
-	}
+		return (NULL);
 	i = 0;
 	size = ft_strlen(s);
 	dest = (char *)malloc((size + 1) * sizeof(char));

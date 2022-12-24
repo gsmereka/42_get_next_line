@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsmereka <gsmereka@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 02:24:40 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/07/05 22:08:52 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/12/24 18:03:42 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,26 @@ char	*ft_define_next_s(char *str);
 char	*get_next_line(int fd)
 {
 	char		*actual_s;
-	static char	*next_s;
+	char		*next_s;
+	static char	*saves[1024];
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	next_s = ft_read(fd, next_s);
+	if (saves[fd] == NULL)
+		saves[fd] = ft_strdup("");
+	next_s = ft_read(fd, saves[fd]);
 	if (!next_s)
+	{
+		free(saves[fd]);
 		return (NULL);
+	}
 	actual_s = ft_actual_s(next_s);
 	next_s = ft_define_next_s(next_s);
+	if (next_s == NULL)
+		saves[fd] = NULL;
+	else
+		saves[fd] = ft_strdup(next_s);
+	free(next_s);
 	return (actual_s);
 }
 
@@ -40,7 +51,7 @@ char	*ft_read(int fd, char *next_s)
 	if (!temp_s)
 		return (NULL);
 	stop = 1;
-	while (stop != 0 && !ft_alt_strchr(next_s, '\n'))
+	while (stop != 0 && !ft_strchr(next_s, '\n'))
 	{
 		stop = read(fd, temp_s, BUFFER_SIZE);
 		if (stop == -1)
@@ -49,7 +60,7 @@ char	*ft_read(int fd, char *next_s)
 			return (NULL);
 		}
 		temp_s[stop] = '\0';
-		next_s = ft_alt_strjoin(next_s, temp_s);
+		next_s = ft_strjoin(next_s, temp_s);
 	}
 	free(temp_s);
 	return (next_s);

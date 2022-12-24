@@ -1,3 +1,9 @@
 # 42_get_next_line
 The get_next_line function aims to efficiently read lines from a file or standard input. It can be useful in any situation where it is necessary to read a file line by line, such as processing log files, reading configuration files or inputting user data in an organized manner.
 The function is called repeatedly to read each line of the file and returns the read line as a string. If there is nothing left to read or an error occurs, the function returns NULL. In addition, the function is able to handle files that do not end with a newline character appropriately. This makes it a useful and versatile tool for reading files in C.
+
+The get_next_line_clean function is a variable version of the get_next_line function, that have an optional feature: the "clean" parameter, which allows the user to clear the memory allocated to store the lines previously read from a particular file descriptor. This can be useful in situations where the user wants to free the memory allocated for these lines and start reading the file from the beginning again.
+
+To use this feature, simply pass the value 1 to the clean parameter when calling the get_next_line_clean function. This will cause the memory allocated to store the previously read lines to be freed and the variable storing these lines to be set to null. The get_next_line_clean function will then return NULL.
+
+This feature is particularly useful in cases where the user wants to read the same file multiple times and does not want the previously read lines to be stored in memory. It can also be useful for preventing memory leaks in long-running programs that read large files.

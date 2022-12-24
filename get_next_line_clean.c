@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_clean.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 02:24:40 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/12/24 19:41:37 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/12/24 19:48:09 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,19 @@ char	*ft_read(int fd, char *next_s);
 char	*ft_actual_s(char *str);
 char	*ft_define_next_s(char *str);
 
-char	*get_next_line(int fd)
+char	*get_next_line_clean(int fd, int clean)
 {
 	char		*actual_s;
 	static char	*next_s[1024];
 
 	if (BUFFER_SIZE <= 0 || fd < 0 || fd > 1024)
 		return (NULL);
+	if (clean == 1)
+	{
+		free(next_s[fd]);
+		next_s[fd] = NULL;
+		return (NULL);
+	}
 	next_s[fd] = ft_read(fd, next_s[fd]);
 	if (!next_s[fd])
 		return (NULL);

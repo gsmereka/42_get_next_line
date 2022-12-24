@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 21:47:58 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/12/24 18:41:22 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/12/24 19:44:18 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # define BUFFER_SIZE 8
 
+char	*get_next_line_clean(int fd, int clean);
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
 int		ft_addstr(char **s1, char *s2);

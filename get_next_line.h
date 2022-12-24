@@ -6,7 +6,7 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/03 21:47:58 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/12/24 18:04:37 by gsmereka         ###   ########.fr       */
+/*   Updated: 2022/12/24 18:14:53 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
-char	*ft_strjoin(char *s1, char *s2);
+char	*ft_addstr(char *s1, char *s2);
 char	*ft_strchr(char *s, int c);
 char	*ft_strdup(char *s);
 

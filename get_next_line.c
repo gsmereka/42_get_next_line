@@ -6,15 +6,15 @@
 /*   By: gsmereka <gsmereka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/02 02:24:40 by gsmereka          #+#    #+#             */
-/*   Updated: 2022/12/24 19:41:37 by gsmereka         ###   ########.fr       */
+/*   Updated: 2023/06/15 16:40:48 by gsmereka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_read(int fd, char *next_s);
-char	*ft_actual_s(char *str);
-char	*ft_define_next_s(char *str);
+static char	*ft_read(int fd, char *next_s);
+static char	*ft_actual_s(char *str);
+static char	*ft_define_next_s(char *str);
 
 char	*get_next_line(int fd)
 {
@@ -31,7 +31,7 @@ char	*get_next_line(int fd)
 	return (actual_s);
 }
 
-char	*ft_read(int fd, char *next_s)
+static char	*ft_read(int fd, char *next_s)
 {
 	char	*temp_s;
 	int		stop;
@@ -55,7 +55,7 @@ char	*ft_read(int fd, char *next_s)
 	return (next_s);
 }
 
-char	*ft_actual_s(char *s)
+static char	*ft_actual_s(char *s)
 {
 	char	*new_s;
 	int		i;
@@ -81,7 +81,7 @@ char	*ft_actual_s(char *s)
 	return (new_s);
 }
 
-char	*ft_define_next_s(char *s)
+static char	*ft_define_next_s(char *s)
 {
 	char	*new_s;
 	int		n_pos;
